@@ -1,49 +1,30 @@
-# AAE5303 Assignment: Visual Odometry with ORB-SLAM3
+# AAE5303 Assignment – ORB-SLAM3 Monocular Visual Odometry
 
-<div align="center">
+Framework: ORB-SLAM3
+Mode: Monocular Visual Odometry
+Dataset: HKIsland_GNSS03 (MARS-LVIG / UAVScenes)
+Evaluation Tool: evo (Sim(3) alignment)
 
-![ORB-SLAM3](https://img.shields.io/badge/SLAM-ORB--SLAM3-blue?style=for-the-badge)
-![VO](https://img.shields.io/badge/Mode-Visual_Odometry-green?style=for-the-badge)
-![Dataset](https://img.shields.io/badge/Dataset-HKisland__GNSS03-orange?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Baseline-success?style=for-the-badge)
-
-**Monocular Visual Odometry Evaluation on UAV Aerial Imagery**
-
-*Hong Kong Island GNSS Dataset - MARS-LVIG*
-
-</div>
-
----
-
-## 📋 Table of Contents
-
-1. [Executive Summary](#-executive-summary)
-2. [Introduction](#-introduction)
-3. [Methodology](#-methodology)
-4. [Dataset Description](#-dataset-description)
-5. [Implementation Details](#-implementation-details)
-6. [Results and Analysis](#-results-and-analysis)
-7. [Visualizations](#-visualizations)
-8. [Discussion](#-discussion)
-9. [Conclusions](#-conclusions)
-10. [References](#-references)
-11. [Appendix](#-appendix)
 
 ---
 
 ## 📊 Executive Summary
 
-This report presents the implementation and evaluation of **Monocular Visual Odometry (VO)** using the **ORB-SLAM3** framework on the **HKisland_GNSS03** UAV aerial imagery dataset. The project evaluates trajectory accuracy against RTK ground truth using **four parallel, monocular-appropriate metrics** computed with the `evo` toolkit.
+This project demonstrates a complete visual SLAM evaluation workflow using ORB-SLAM3 on a real-world UAV dataset. The goal is to estimate the camera trajectory from monocular images and evaluate its accuracy against RTK ground truth.
+
+The experiment was conducted on the HKisland_GNSS03 sequence from the MARS-LVIG / UAVScenes dataset, which contains synchronized camera and RTK measurements. ORB-SLAM3 was used to generate the visual odometry trajectory, and the result was evaluated using Sim(3) alignment with ground truth to compensate for scale ambiguity inherent in monocular SLAM.
+
+After alignment, the estimated trajectory closely follows the ground truth path, demonstrating that ORB-SLAM3 can recover the overall structure of the UAV flight trajectory. However, noticeable deviations remain in several segments due to accumulated drift and visual tracking uncertainty.
 
 ### Key Results
 
-| Metric | Value | Description |
-|--------|-------|-------------|
-| **ATE RMSE** | **132.1547 m** | Global accuracy after Sim(3) alignment (scale corrected) |
-| **RPE Trans Drift** | **2.8701 m/m** | Translation drift rate (mean error per meter, delta=10 m) |
-| **RPE Rot Drift** | **173.3319 deg/100m** | Rotation drift rate (mean angle per 100 m, delta=10 m) |
-| **Completeness** | **87.01%** | Matched poses / total ground-truth poses (1701 / 1955) |
-| **Estimated poses** | 2,826 | Trajectory poses in `CameraTrajectory.txt` |
+| Metric | Value | 
+|--------|-------|
+| **ATE RMSE** | **20.77 m** |
+| **RPE Trans Drift** | **0.3907 m/m** |
+| **RPE Rot Drift** | **96.3766 deg/100m** | 
+| **Completeness** | **94.73%** | 
+| **Estimated poses** | 3705 | 
 
 ---
 
