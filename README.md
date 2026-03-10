@@ -76,6 +76,67 @@ To ensure correct trajectory alignment during evaluation:
 - They are converted to **seconds** for compatibility with the evaluation tools
 - A **synchronization threshold of 0.5 seconds** is applied when matching estimated poses with ground truth
 
+## 4. Methodology
+
+### 4.1 Running ORB-SLAM3
+
+Monocular compressed node:
+
+```
+./Mono_Compressed Vocabulary/ORBvoc.txt config/DJI_Camera.yaml
+```
+Trajectory saved as:
+
+```
+SLAM.SaveTrajectoryTUM("CameraTrajectory.txt");
+```
+
+---
+
+### 4.2 Ground Truth Processing
+
+Steps:
+
+1. Extract GNSS poses from rosbag  
+2. Convert to TUM trajectory format  
+3. Convert timestamps (ns to s)  
+4. Synchronize with estimated trajectory  
+5. Evaluate using evo
+
+### 4.3 Evaluation Command
+
+```
+evo_ape tum ground_truth.txt CameraTrajectory.txt 
+–align –correct_scale –t_max_diff 0.5
+```
+
+Parameters:
+
+- Alignment: Sim(3) with scale correction  
+- Delta distance for RPE: 10 m  
+- Time threshold: 0.5 s  
+
+---
+
+## 5. Trajectory Alignment Statistics
+
+| Parameter | Value |
+|---|---|
+| Alignment | Sim(3) with scale correction |
+| Matched poses | 1852 / 1955 |
+| Completeness | 94.73% |
+
+## 6. Quantitative Results
+
+| Metric | Value |
+|---|---|
+| ATE RMSE | 20.77 m |
+| ATE Mean | 18.24 m |
+| ATE Median | 16.66 m |
+| RPE Translational RMSE | 4.10 m |
+| Scale (Sim3) | 1.0386 |
+
+---
 **AAE5303 - Robust Control Technology in Low-Altitude Aerial Vehicle**
 
 *Department of Aeronautical and Aviation Engineering*
