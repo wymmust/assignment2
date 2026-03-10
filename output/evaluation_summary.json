@@ -1,0 +1,74 @@
+{
+    "evaluation_summary": {
+        "dataset": "HKisland_GNSS03",
+        "source": "MARS-LVIG / UAVScenes",
+        "total_images": 3833,
+        "keyframes_output": 736,
+        "ground_truth_poses": 1955,
+        "matched_poses": 1852,
+        "association_rate": 49.99,
+        "completeness": 94.73,
+        "trajectory_length_m": 1901.88,
+        "duration_s": 390.78,
+        "estimated_poses": 3705
+    },
+    "key_results": {
+        "ate_rmse_m": 20.7656,
+        "rpe_trans_drift_m_per_m": 0.3907,
+        "rpe_rot_drift_deg_per_100m": 96.3766,
+        "completeness_percent": 94.73,
+        "estimated_poses": 3705
+    },
+    "metrics": {
+        "ate": {
+            "rmse": 20.7656,
+            "mean": 18.2377,
+            "median": 16.6598,
+            "std": 9.9296,
+            "min": 1.2962,
+            "max": 49.2058,
+            "unit": "meters"
+        },
+        "rpe": {
+            "trans_rmse": 4.1033,
+            "trans_mean": 2.1151,
+            "trans_median": 1.6112,
+            "trans_std": 3.5162,
+            "delta_frames": 10,
+            "unit": "meters"
+        },
+        "rpe_drift": {
+            "delta_m": 10.0,
+            "trans_drift_mean": 0.3907,
+            "trans_drift_rmse": 0.5539,
+            "trans_drift_unit": "m/m",
+            "rot_drift_mean": 96.3766,
+            "rot_drift_rmse": 208.6851,
+            "rot_drift_unit": "deg/100m",
+            "pairs": 1714
+        },
+        "scale_error": {
+            "scale_ratio": 0.9214,
+            "scale_drift_percent": 7.86,
+            "unit": "percentage"
+        }
+    },
+    "alignment": {
+        "method": "Sim(3)",
+        "estimated_scale": 1.0386,
+        "translation": [
+            -18.743,
+            14.881,
+            7.778
+        ]
+    },
+    "baseline_config": {
+        "framework": "ORB-SLAM3",
+        "mode": "Monocular Visual Odometry",
+        "nFeatures": 1800,
+        "nLevels": 9,
+        "scaleFactor": 1.15,
+        "iniThFAST": 19,
+        "minThFAST": 9
+    }
+}
