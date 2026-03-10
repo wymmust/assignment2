@@ -62,7 +62,9 @@ Only the **monocular camera stream** is used for pose estimation in this assignm
 
 Ground truth trajectory is obtained from the GNSS/RTK system and extracted from the following ROS topic:
 
+```
 /dji_osdk_ros/local_position
+```
 
 This provides accurate position measurements of the UAV during flight, which are used as the reference trajectory for evaluation.
 
