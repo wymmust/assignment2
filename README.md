@@ -150,7 +150,44 @@ The following figure summarizes the trajectory evaluation results of ORB-SLAM3 m
 
 The following figure summarizes the trajectory evaluation results of ORB-SLAM3 monocular visual odometry compared with the RTK ground truth.
 
-[Trajectory Evaluation](trajectory_evaluation.png)
+## 7. Trajectory Visualization
+
+### 7.1 Trajectory Overlay and Error Analysis
+
+The following figure summarizes the trajectory evaluation results of ORB-SLAM3 monocular visual odometry compared with the RTK ground truth.
+
+![Trajectory Evaluation](trajectory_evaluation.png)
+
+The visualization contains four subplots:
+
+**1. 2D Trajectory – Before Alignment**
+
+- Shows the estimated trajectory before alignment.
+- Red dashed line: Visual odometry trajectory.
+- Green line: Ground truth trajectory (RTK).
+- The large offset is mainly caused by the scale ambiguity inherent in monocular SLAM.
+
+**2. 2D Trajectory – After Sim(3) Alignment**
+
+- The estimated trajectory is aligned with the ground truth using Sim(3) transformation.
+- Blue line: Aligned visual odometry trajectory.
+- Green line: Ground truth trajectory.
+- After alignment, the overall trajectory shape matches well with the ground truth.
+
+**3. Absolute Trajectory Error (ATE) Distribution**
+
+- Shows the histogram of ATE errors.
+- Mean ATE ≈ **18.24 m**
+- Median ATE ≈ **16.66 m**
+- Most errors are concentrated between **10 m – 30 m**, indicating moderate global drift.
+
+**4. ATE Error Along Trajectory**
+
+- Shows how ATE changes along the trajectory.
+- Larger spikes correspond to challenging sections of the flight path where visual tracking becomes less stable.
+- These errors are typically caused by motion blur, low-texture environments, or accumulated drift.
+
+Overall, the visualization demonstrates that ORB-SLAM3 can recover the global trajectory structure, although some drift remains due to the monocular scale ambiguity and challenging UAV flight conditions.
 
 The visualization contains four subplots:
 
