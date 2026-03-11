@@ -143,7 +143,8 @@ Parameters:
 
 The following figure summarizes the trajectory evaluation results of ORB-SLAM3 monocular visual odometry compared with the RTK ground truth.
 
-![Trajectory Evaluation](trajectory_evaluation.png)
+<img width="3566" height="2970" alt="trajectory_evaluation_副本" src="https://github.com/user-attachments/assets/5e4b121e-e7e4-4927-ba56-8486771576b2" />
+
 
 The visualization contains four subplots:
 
