@@ -139,8 +139,6 @@ Parameters:
 ---
 ## 7. Trajectory Visualization
 
-### 7.1 Trajectory Overlay and Error Analysis
-
 The following figure summarizes the trajectory evaluation results of ORB-SLAM3 monocular visual odometry compared with the RTK ground truth.
 
 <img width="3566" height="2970" alt="trajectory_evaluation_副本" src="https://github.com/user-attachments/assets/5e4b121e-e7e4-4927-ba56-8486771576b2" />
@@ -177,6 +175,41 @@ The visualization contains four subplots:
 
 Overall, the visualization demonstrates that ORB-SLAM3 can recover the global trajectory structure, although some drift remains due to the monocular scale ambiguity and challenging UAV flight conditions.
 
+## 8. Analysis of Output
+
+The experimental results provide insight into the performance of ORB-SLAM3 when applied to UAV monocular visual odometry.
+
+### 8.1 Trajectory Alignment
+
+Before alignment, the estimated trajectory shows a clear scale and orientation mismatch compared with the ground truth. This is expected because monocular SLAM cannot directly observe the absolute scale of the environment. After applying Sim(3) alignment using the evo evaluation tool, the estimated trajectory becomes well aligned with the RTK ground truth. The overall trajectory structure and flight path are successfully recovered.
+
+### 8.2 Absolute Trajectory Error (ATE)
+
+The Absolute Trajectory Error (ATE) measures the global consistency of the estimated trajectory. In this experiment:
+
+- ATE RMSE ≈ **20.77 m**
+- Mean ATE ≈ **18.24 m**
+- Median ATE ≈ **16.66 m**
+
+Most of the error values fall within the **10–30 m range**, indicating that the system maintains a reasonable global estimate of the UAV trajectory. However, the presence of larger errors suggests that drift accumulates over time.
+
+### 8.3 Relative Pose Error (RPE)
+
+The Relative Pose Error reflects the local motion accuracy between consecutive frames. The translational RPE RMSE is approximately **4.10 m**, which indicates that the system is able to estimate short-term motion reasonably well. This shows that the local tracking of ORB-SLAM3 remains stable even though global drift occurs.
+
+### 8.4 Error Distribution Along the Trajectory
+
+From the ATE error plot along the trajectory, several peaks can be observed. These peaks correspond to segments where the visual tracking becomes more challenging. Possible causes include:
+
+- Motion blur caused by fast UAV movement
+- Low-texture environments such as roads or open areas
+- Temporary tracking loss or feature scarcity
+
+These factors lead to larger deviations between the estimated trajectory and the ground truth.
+
+### 8.5 Overall Performance
+
+Overall, ORB-SLAM3 successfully reconstructs the general flight trajectory of the UAV. The system demonstrates strong local tracking capability but still suffers from global drift, which is a common limitation of monocular visual SLAM systems. Despite these challenges, the results show that ORB-SLAM3 is capable of producing a reliable trajectory estimate for aerial navigation tasks.
 
 **AAE5303 - Robust Control Technology in Low-Altitude Aerial Vehicle**
 
