@@ -150,7 +150,7 @@ The following figure summarizes the trajectory evaluation results of ORB-SLAM3 m
 
 The following figure summarizes the trajectory evaluation results of ORB-SLAM3 monocular visual odometry compared with the RTK ground truth.
 
-![Trajectory Evaluation](trajectory_evaluation.png)
+[Trajectory Evaluation](trajectory_evaluation.png)
 
 The visualization contains four subplots:
 
