@@ -211,6 +211,16 @@ These factors lead to larger deviations between the estimated trajectory and the
 
 Overall, ORB-SLAM3 successfully reconstructs the general flight trajectory of the UAV. The system demonstrates strong local tracking capability but still suffers from global drift, which is a common limitation of monocular visual SLAM systems. Despite these challenges, the results show that ORB-SLAM3 is capable of producing a reliable trajectory estimate for aerial navigation tasks.
 
+## 9. Conclusion
+
+This project demonstrates the application of **ORB-SLAM3 monocular visual odometry** for UAV trajectory estimation using the **HKIsland_GNSS03 dataset**. The estimated trajectory was evaluated against RTK ground truth using the **evo evaluation toolkit** with Sim(3) alignment.
+
+The experimental results show that ORB-SLAM3 is capable of recovering the overall UAV flight trajectory from monocular image sequences. After alignment, the estimated trajectory follows the general structure of the ground truth path, indicating that the system can effectively capture the motion of the platform.
+
+Quantitative evaluation shows an **ATE RMSE of approximately 20.77 m** and a **relative pose error of about 4.10 m**, demonstrating reasonable accuracy for monocular visual odometry in outdoor UAV environments. Although some drift accumulates over longer trajectories, the system maintains stable local motion estimation.
+
+Overall, the experiment confirms that ORB-SLAM3 provides a reliable solution for **monocular SLAM-based UAV navigation**, while also highlighting the inherent limitations of monocular systems such as scale ambiguity and long-term drift.
+
 **AAE5303 - Robust Control Technology in Low-Altitude Aerial Vehicle**
 
 *Department of Aeronautical and Aviation Engineering*
